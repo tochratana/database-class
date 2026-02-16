@@ -110,30 +110,29 @@ CREATE TABLE Orders (
 ```
 
 ```mermaid
-flowchart LR
+erDiagram
+    CUSTOMER {
+        int CustomerID PK
+        string Name
+        string Phone
+        string Address
+    }
 
-    Customer["CUSTOMER
-    -------------------
-    CustomerID : INT PK
-    Name : VARCHAR(100)
-    Phone : VARCHAR(20)
-    Address : VARCHAR(255)"]
+    RESTAURANT {
+        int RestaurantID PK
+        string Name
+        string Location
+        float Rating
+    }
 
-    Restaurant["RESTAURANT
-    -------------------
-    RestaurantID : INT PK
-    Name : VARCHAR(150)
-    Location : VARCHAR(150)
-    Rating : DECIMAL(2,1)"]
+    ORDERS {
+        int OrderID PK
+        int CustomerID FK
+        int RestaurantID FK
+        float TotalPrice
+        date OrderDate
+    }
 
-    Orders["ORDERS
-    -------------------
-    OrderID : INT PK
-    CustomerID : INT FK
-    RestaurantID : INT FK
-    TotalPrice : DECIMAL(10,2)
-    OrderDate : DATE"]
-
-    Customer --> Orders
-    Restaurant --> Orders
+    CUSTOMER ||--o{ ORDERS : places
+    RESTAURANT ||--o{ ORDERS : receives
 ```
