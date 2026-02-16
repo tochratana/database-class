@@ -5,6 +5,8 @@ set -e
 
 BRANCH="main"
 REMOTE="origin"
+# Get current date & time
+DATE=$(date "+%Y-%m-%d %H:%M:%S")
 
 # Ask for commit message
 read -p "Enter commit message: " MESSAGE
@@ -33,7 +35,7 @@ echo "Adding changes..."
 git add .
 
 echo "Committing..."
-git commit -m "$MESSAGE | $(date +'%Y%m%d_%H%M%S')"
+git commit -m "$MESSAGE | $DATE)"
 
 echo "Pushing to $REMOTE $BRANCH..."
 git push $REMOTE $BRANCH
