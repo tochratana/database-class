@@ -22,25 +22,13 @@ Relationships
 - Each borrow has Date Borrowed
 
 ```mermaid
-erDiagram
-    STUDENT ||--o{ TRANSACTION : borrows
-    BOOK ||--o{ TRANSACTION : borrowed_in
+flowchart LR
+    Student[Student]
+    Book[Book]
+    Borrow[Borrow]
 
-    STUDENT {
-        string StudentID
-        string Name
-        string Email
-    }
-
-    BOOK {
-        string ISBN
-        string Title
-        string Author
-    }
-
-    TRANSACTION {
-        date DateBorrowed
-    }
+    Student --- Borrow
+    Book --- Borrow
 ```
 
 #### 2. Logical Design
@@ -65,34 +53,65 @@ Tables
 - DateBorrowed
 
 ```mermaid
-erDiagram
-    STUDENT ||--o{ TRANSACTION : borrows
-    BOOK ||--o{ TRANSACTION : included
+flowchart LR
 
-    STUDENT {
-        int StudentID PK
-        string Name
-        string Email
-    }
+    Student["STUDENT
+    -------------------
+    StudentID : VARCHAR(20) PK
+    Name : VARCHAR(100)
+    Email : VARCHAR(100) UNIQUE"]
 
-    BOOK {
-        string ISBN PK
-        string Title
-        string Author
-    }
+    Book["BOOK
+    -------------------
+    ISBN : VARCHAR(20) PK
+    Title : VARCHAR(200)
+    Author : VARCHAR(100)"]
 
-    TRANSACTION {
-        int TransactionID PK
-        int StudentID FK
-        string ISBN FK
-        date DateBorrowed
-    }
+    Borrow["BORROW
+    -------------------
+    BorrowID : INT PK
+    StudentID : VARCHAR(20) FK
+    ISBN : VARCHAR(20) FK
+    DateBorrowed : DATE"]
+
+    Student --> Borrow
+    Book --> Borrow
 ```
 
 
 
 #### 3. Physical Design (Real Database Implementation – SQL)
 
+
+Now we define:
+- Data types
+- Constraints
+- Real SQL tables
+
+**SQL Schema**
+```sql
+CREATE TABLE Student (
+    StudentID VARCHAR(20) PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE Book (
+    ISBN VARCHAR(20) PRIMARY KEY,
+    Title VARCHAR(200) NOT NULL,
+    Author VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Transaction (
+    TransactionID INT AUTO_INCREMENT PRIMARY KEY,
+    StudentID VARCHAR(20),
+    ISBN VARCHAR(20),
+    DateBorrowed DATE NOT NULL,
+
+    FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
+    FOREIGN KEY (ISBN) REFERENCES Book(ISBN)
+);
+```
 ```mermaid
 erDiagram
     STUDENT {
