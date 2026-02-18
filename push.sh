@@ -35,7 +35,7 @@ echo "Adding changes..."
 git add .
 
 echo "Committing..."
-git commit -m "$MESSAGE | $DATE)"
+git commit -m "$MESSAGE | $DATE"
 
 echo "Pushing to $REMOTE $BRANCH..."
 git push $REMOTE $BRANCH

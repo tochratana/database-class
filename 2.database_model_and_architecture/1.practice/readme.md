@@ -88,30 +88,7 @@ Now we define:
 - Constraints
 - Real SQL tables
 
-**SQL Schema**
-```sql
-CREATE TABLE Student (
-    StudentID VARCHAR(20) PRIMARY KEY,
-    Name VARCHAR(100) NOT NULL,
-    Email VARCHAR(100) UNIQUE NOT NULL
-);
 
-CREATE TABLE Book (
-    ISBN VARCHAR(20) PRIMARY KEY,
-    Title VARCHAR(200) NOT NULL,
-    Author VARCHAR(100) NOT NULL
-);
-
-CREATE TABLE Transaction (
-    TransactionID INT AUTO_INCREMENT PRIMARY KEY,
-    StudentID VARCHAR(20),
-    ISBN VARCHAR(20),
-    DateBorrowed DATE NOT NULL,
-
-    FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
-    FOREIGN KEY (ISBN) REFERENCES Book(ISBN)
-);
-```
 ```mermaid
 erDiagram
     STUDENT {
