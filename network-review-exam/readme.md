@@ -41,3 +41,18 @@ IP Address គឺជាអាសយដ្ឋានសម្គាល់ឧបក
 Switch គឺជាឧបករណ៍កណ្តាលសម្រាប់តភ្ជាប់ឧបករណ៍ផ្សេងៗក្នុងបណ្តាញ LAN តែមួយ។ វាដំណើរការនៅ Layer 2 ដោយស្គាល់ និងទន្ទេញ MAC Address របស់ឧបករណ៍នីមួយៗ ដើម្បីបញ្ជូនទិន្នន័យ (Frame) ទៅគោលដៅបានត្រឹមត្រូវ មិនរំខានអ្នកដទៃ។ ប្រភេទរបស់ Switch រួមមាន៖
 - Unmanaged Switch: ជាប្រភេទដោតខ្សែចូលហើយដើរតែម្តង (Plug and Play) មិនអាចចូលទៅកំណត់ (Config) អ្វីបន្ថែមបានទេ។ ភាគច្រើនប្រើតាមផ្ទះ ឬការិយាល័យតូចៗ។
 - Managed Switch: ជាប្រភេទដែលអាចចូលទៅកំណត់មុខងារផ្សេងៗបានយ៉ាងច្រើន (Configurable) ដូចជាការបង្កើត VLAN, កំណត់ល្បឿនទិន្នន័យ (QoS), ឬរឹតបន្តឹងសុវត្ថិភាព។ វាប្រើប្រាស់សម្រាប់ស្ថាប័ន ឬក្រុមហ៊ុនធំៗ។
+
+* Class A : 
+
+Private IP Address Range: 10.0.0.0 to 10.255.255.255.1
+Public IP Address Example: The document does not provide a specific example of a Class A public IP address. Public IP addresses are those besides the private ranges.
+
+* Class B : 
+
+Private IP Address Range: 172.16.0.0 to 172.31.255.255.3
+Public IP Address Example: The document does not provide a specific example of a Class B public IP address. Public IP addresses are those besides the private ranges.
+
+* Class C : 
+
+Private IP Address Range: 192.168.0.0 to 192.168.255.255.4
+Public IP Address Example: 203.223.45.98. Public IP addresses are those besides the private IP addresses.
